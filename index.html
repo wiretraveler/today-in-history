@@ -85,42 +85,58 @@
 
   <script>
     const TODAY_EVENTS = {
-      "01-28": [
-        {
-          year: "1958",
-          text: "The LEGO brick patent application was filed, helping define the interlocking brick design used today."
-        }
-      ],
-      "04-23": [
-        {
-          year: "2005",
-          text: "The first video was uploaded to YouTube, a short clip titled “Me at the zoo.”"
-        }
-      ],
-      "05-24": [
-        {
-          year: "1844",
-          text: "Samuel Morse sent the first long-distance telegraph message between Washington and Baltimore."
-        }
-      ],
-      "07-20": [
-        {
-          year: "1969",
-          text: "Apollo 11 astronauts Neil Armstrong and Buzz Aldrin landed on the Moon."
-        }
-      ],
-      "09-05": [
-        {
-          year: "1977",
-          text: "NASA launched Voyager 1, which later became the most distant human-made object."
-        }
-      ],
-      "12-17": [
-        {
-          year: "1903",
-          text: "Wilbur and Orville Wright made the first successful powered airplane flights at Kitty Hawk."
-        }
-      ]
+  "01-01": [{ year: "1801", text: "The United Kingdom of Great Britain and Ireland was officially formed." }],
+  "01-02": [{ year: "1959", text: "The Soviet Union launched Luna 1, the first spacecraft to reach the vicinity of the Moon." }],
+  "01-03": [{ year: "1959", text: "Alaska became the 49th U.S. state." }],
+  "01-04": [{ year: "2004", text: "NASA's Spirit rover successfully landed on Mars." }],
+  "01-05": [{ year: "1933", text: "Construction began on the Golden Gate Bridge in San Francisco." }],
+  "01-06": [{ year: "1994", text: "Figure skater Nancy Kerrigan was attacked, leading to increased sports security awareness." }],
+  "01-07": [{ year: "1610", text: "Galileo Galilei observed the four largest moons of Jupiter for the first time." }],
+  "01-08": [{ year: "1790", text: "George Washington delivered the first State of the Union address." }],
+  "01-09": [{ year: "2007", text: "Apple introduced the first iPhone." }],
+  "01-10": [{ year: "1920", text: "The League of Nations was established." }],
+  "01-11": [{ year: "1964", text: "The U.S. Surgeon General released a landmark report on smoking and health." }],
+  "01-12": [{ year: "2005", text: "The Huygens probe landed on Saturn’s moon Titan." }],
+  "01-13": [{ year: "1842", text: "Dr. William Brydon reached safety as the sole survivor of a retreat from Kabul." }],
+  "01-14": [{ year: "1784", text: "The United States ratified the Treaty of Paris, ending the Revolutionary War." }],
+  "01-15": [{ year: "1929", text: "Martin Luther King Jr. was born." }],
+  "01-16": [{ year: "2003", text: "The Space Shuttle Columbia launched on its final mission." }],
+  "01-17": [{ year: "1706", text: "Benjamin Franklin was born." }],
+  "01-18": [{ year: "1778", text: "Captain James Cook discovered the Hawaiian Islands." }],
+  "01-19": [{ year: "2006", text: "NASA’s New Horizons spacecraft launched toward Pluto." }],
+  "01-20": [{ year: "1986", text: "Martin Luther King Jr. Day was first observed as a U.S. federal holiday." }],
+  "01-21": [{ year: "1976", text: "The Concorde began commercial passenger flights." }],
+  "01-22": [{ year: "1973", text: "The crew of Apollo 17 returned safely to Earth." }],
+  "01-23": [{ year: "1849", text: "Elizabeth Blackwell became the first woman to receive a medical degree in the U.S." }],
+  "01-24": [{ year: "1984", text: "Apple introduced the Macintosh computer." }],
+  "01-25": [{ year: "1924", text: "The first Winter Olympics opened in Chamonix, France." }],
+  "01-26": [{ year: "1983", text: "The Lotus 1-2-3 spreadsheet program was released." }],
+  "01-27": [{ year: "1888", text: "The National Geographic Society was founded." }],
+  "01-28": [{ year: "1958", text: "The LEGO brick patent application was filed." }],
+  "01-29": [{ year: "1886", text: "Karl Benz patented the first practical automobile." }],
+  "01-30": [{ year: "1969", text: "The Beatles performed their final public concert on a rooftop in London." }],
+  "01-31": [{ year: "1958", text: "Explorer 1, the first U.S. satellite, was launched." }],
+
+  "02-01": [{ year: "2003", text: "The Space Shuttle Columbia completed its final mission." }],
+  "02-02": [{ year: "1848", text: "The Treaty of Guadalupe Hidalgo ended the Mexican-American War." }],
+  "02-03": [{ year: "1966", text: "Luna 9 became the first spacecraft to land successfully on the Moon." }],
+  "02-04": [{ year: "2004", text: "Facebook was launched." }],
+  "02-05": [{ year: "1971", text: "Apollo 14 astronauts landed on the Moon." }],
+  "02-06": [{ year: "1952", text: "Queen Elizabeth II became monarch of the United Kingdom." }],
+  "02-07": [{ year: "1984", text: "Astronaut Bruce McCandless performed the first untethered spacewalk." }],
+  "02-08": [{ year: "1587", text: "Mary, Queen of Scots, was executed." }],
+  "02-09": [{ year: "1969", text: "The Boeing 747 made its first flight." }],
+  "02-10": [{ year: "1996", text: "IBM’s Deep Blue computer defeated a world chess champion in a game." }],
+  "02-11": [{ year: "1990", text: "Nelson Mandela was released from prison." }],
+  "02-12": [{ year: "1809", text: "Charles Darwin was born." }],
+  "02-13": [{ year: "1946", text: "ENIAC, one of the first general-purpose computers, was unveiled." }],
+  "02-14": [{ year: "1876", text: "Alexander Graham Bell applied for a patent for the telephone." }],
+  "02-15": [{ year: "1564", text: "Galileo Galilei was born." }],
+  "02-16": [{ year: "1968", text: "The first 911 emergency call was placed in the United States." }],
+  "02-17": [{ year: "1933", text: "Newsweek magazine published its first issue." }],
+  "02-18": [{ year: "1930", text: "Clyde Tombaugh discovered Pluto." }],
+  "02-19": [{ year: "1878", text: "Thomas Edison patented the phonograph." }]
+};
     };
 
     const ALL_EVENTS = Object.entries(TODAY_EVENTS).flatMap(([dateKey, items]) =>
