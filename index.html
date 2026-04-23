@@ -1,280 +1,82 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>On This Day</title>
+  <title>Today in History</title>
   <style>
-    :root {
-      --bg: #111214;
-      --text: #f4f6f8;
-      --muted: #adb5bf;
-      --accent: #f0c84b;
-      --line: rgba(255,255,255,0.08);
-      --panelTop: #23272c;
-      --panelBottom: #1a1d21;
-      --card: rgba(255,255,255,0.05);
-    }
-
-    * { box-sizing: border-box; }
-
-    html, body {
-      margin: 0;
-      width: 100%;
-      height: 100%;
-      overflow: hidden;
-      background: var(--bg);
-      color: var(--text);
-      font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-    }
-
     body {
-      background:
-        radial-gradient(circle at top right, rgba(255,255,255,0.03), transparent 22%),
-        linear-gradient(180deg, #16181b 0%, #101113 100%);
-    }
-
-    .board {
-      width: 100vw;
-      height: 100vh;
-      display: grid;
-      grid-template-columns: 1.15fr 1fr;
-      overflow: hidden;
-      background: linear-gradient(135deg, #1c1f23 0%, #111214 62%, #191d21 100%);
-    }
-
-    .hero {
-      position: relative;
-      overflow: hidden;
-      background:
-        radial-gradient(circle at 22% 20%, rgba(240,200,75,0.14), transparent 18%),
-        radial-gradient(circle at 72% 38%, rgba(255,255,255,0.05), transparent 20%),
-        linear-gradient(135deg, #2b2f34 0%, #17191c 100%);
-      display: grid;
-      place-items: center;
-      padding: 4vw;
-    }
-
-    .hero::before {
-      content: "TODAY";
-      position: absolute;
-      inset: auto auto 6% 6%;
-      font-size: clamp(90px, 13vw, 240px);
-      font-weight: 900;
-      letter-spacing: -0.07em;
-      line-height: 0.9;
-      color: rgba(255,255,255,0.05);
-      pointer-events: none;
-    }
-
-    .hero-inner {
-      position: relative;
-      z-index: 1;
-      width: min(86%, 760px);
-    }
-
-    .kicker {
-      margin: 0 0 18px;
-      color: var(--accent);
-      font-size: clamp(18px, 1vw, 24px);
-      font-weight: 900;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-    }
-
-    .hero-title {
-      margin: 0 0 20px;
-      font-size: clamp(54px, 5.2vw, 98px);
-      line-height: 0.95;
-      font-weight: 900;
-      letter-spacing: -0.06em;
-      text-wrap: balance;
-    }
-
-    .hero-subtitle {
-      margin: 0;
-      max-width: 24ch;
-      font-size: clamp(22px, 1.65vw, 34px);
-      line-height: 1.24;
-      color: #d8dde4;
-    }
-
-    .panel {
-      position: relative;
-      display: grid;
-      grid-template-rows: auto auto 1fr auto;
-      padding: clamp(22px, 2.2vh, 34px) clamp(24px, 2vw, 38px) clamp(18px, 2vh, 28px);
-      background: linear-gradient(180deg, var(--panelTop) 0%, var(--panelBottom) 100%);
-      border-left: 1px solid rgba(255,255,255,0.06);
-      overflow: hidden;
-    }
-
-    .panel::before {
-      content: "HISTORY";
-      position: absolute;
-      right: -14px;
-      top: 50%;
-      transform: translateY(-50%) rotate(-90deg);
-      font-size: clamp(110px, 11vw, 170px);
-      font-weight: 900;
-      letter-spacing: -0.06em;
-      color: rgba(255,255,255,0.035);
-      pointer-events: none;
-    }
-
-    .title {
-      position: relative;
-      z-index: 1;
-      font-size: clamp(18px, 1.1vw, 22px);
-      font-weight: 900;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-      color: var(--accent);
-    }
-
-    .date-pill {
-      position: relative;
-      z-index: 1;
-      margin-top: 18px;
-      display: inline-flex;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
       align-items: center;
-      width: fit-content;
-      gap: 10px;
-      padding: 12px 16px;
-      border-radius: 14px 0 0 14px;
-      background: linear-gradient(90deg, #f3cf57, #efbd1c);
-      color: #171717;
-      font-size: clamp(14px, 0.9vw, 16px);
-      font-weight: 900;
-      letter-spacing: 0.06em;
+      min-height: 100vh;
+      margin: 0;
+      padding: 2rem;
+      font-family: "Segoe UI", sans-serif;
+      background: #121417;
+      color: #f3f4f6;
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 2.6rem;
+      font-weight: 700;
+      margin-bottom: 0.75rem;
+      color: #f0c84b;
+      letter-spacing: 0.04em;
       text-transform: uppercase;
-      white-space: nowrap;
     }
 
-    .date-pill::before {
-      content: "";
-      width: 12px;
-      height: 12px;
-      border: 3px solid currentColor;
-      border-radius: 50%;
-      flex: 0 0 auto;
+    #date {
+      font-size: 1.5rem;
+      font-weight: 600;
+      margin-bottom: 2rem;
+      color: #c9d1d9;
     }
 
-    .events {
-      position: relative;
-      z-index: 1;
-      margin-top: 26px;
-      display: grid;
-      gap: 16px;
-      align-content: center;
-      min-height: 0;
+    #history-container {
+      max-width: 900px;
+      width: 100%;
+      background: #1b1f24;
+      padding: 2.25rem;
+      border-radius: 20px;
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.28);
     }
 
     .event {
-      background: var(--card);
-      border: 1px solid rgba(255,255,255,0.06);
-      border-radius: 20px;
-      padding: 20px 22px;
-      backdrop-filter: blur(4px);
+      margin-bottom: 1.75rem;
     }
 
-    .event-year {
-      margin: 0 0 8px;
-      color: var(--accent);
-      font-size: clamp(18px, 1vw, 24px);
-      font-weight: 900;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
+    .event:last-child {
+      margin-bottom: 0;
     }
 
-    .event-text {
-      margin: 0;
-      font-size: clamp(22px, 1.5vw, 30px);
-      line-height: 1.24;
-      color: #edf1f5;
-      text-wrap: balance;
-    }
-
-    .footer {
-      position: relative;
-      z-index: 1;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 16px;
-      padding-top: 16px;
-      border-top: 1px solid var(--line);
-      color: var(--muted);
-      font-size: clamp(14px, 0.9vw, 16px);
-      font-weight: 900;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-    }
-
-    .meta-left {
-      display: inline-flex;
-      align-items: center;
-      gap: 12px;
-      min-width: 0;
-    }
-
-    .meta-left::before {
-      content: "";
-      width: 10px;
-      height: 10px;
-      border-radius: 50%;
-      background: #38d39f;
-      box-shadow: 0 0 0 4px rgba(56,211,159,0.14);
-    }
-
-    .loading {
-      display: grid;
-      place-items: center;
-      height: 100%;
-      font-size: 24px;
+    .year {
+      display: block;
+      font-size: 1.4rem;
       font-weight: 700;
+      color: #f0c84b;
+      margin-bottom: 0.4rem;
     }
 
-    @media (max-width: 1600px), (max-height: 950px) {
-      .board { grid-template-columns: 1.05fr 1fr; }
-      .hero-title { font-size: clamp(46px, 4.4vw, 78px); }
-      .hero-subtitle { font-size: clamp(20px, 1.4vw, 28px); }
-      .event-text { font-size: clamp(19px, 1.25vw, 25px); }
+    .text {
+      font-size: 2rem;
+      line-height: 1.35;
+      color: #f3f4f6;
     }
 
-    @media (max-width: 1100px) {
-      .board { grid-template-columns: 1fr; }
-      .hero { display: none; }
-      .panel { padding: 24px 24px 18px; }
-      .event-text { font-size: clamp(18px, 1.4vw, 22px); }
+    .fallback {
+      font-size: 1.8rem;
+      line-height: 1.4;
+      color: #e5e7eb;
     }
   </style>
 </head>
 <body>
-  <main class="board">
-    <section class="hero">
-      <div class="hero-inner">
-        <p class="kicker">Safe History</p>
-        <h1 class="hero-title">On This Day</h1>
-        <p class="hero-subtitle">
-          Positive, factual milestones selected for all-ages display screens.
-        </p>
-      </div>
-    </section>
-
-    <aside class="panel">
-      <div class="title">On This Day</div>
-      <div class="date-pill" id="datePill">Loading…</div>
-      <div class="events" id="events">
-        <div class="loading">Loading today’s milestones…</div>
-      </div>
-
-      <div class="footer">
-        <div class="meta-left" id="metaText">All-ages factual history</div>
-        <div id="sourceText">Source: Local curated list</div>
-      </div>
-    </aside>
-  </main>
+  <h1>On This Day</h1>
+  <div id="date">Loading...</div>
+  <div id="history-container">Loading today in history...</div>
 
   <script>
     const TODAY_EVENTS = {
@@ -320,9 +122,6 @@
       items.map(item => ({ ...item, dateKey }))
     );
 
-    const eventsEl = document.getElementById("events");
-    const datePillEl = document.getElementById("datePill");
-
     function getTodayKey() {
       const now = new Date();
       const month = String(now.getMonth() + 1).padStart(2, "0");
@@ -346,9 +145,9 @@
 
     function getEventsForToday() {
       const todayKey = getTodayKey();
+
       if (TODAY_EVENTS[todayKey]) {
         return {
-          dateKey: todayKey,
           label: formatDateLabel(todayKey),
           items: TODAY_EVENTS[todayKey]
         };
@@ -356,8 +155,7 @@
 
       const fallback = ALL_EVENTS[deterministicFallbackIndex(todayKey)];
       return {
-        dateKey: todayKey,
-        label: `${formatDateLabel(todayKey)} · Featured`,
+        label: formatDateLabel(todayKey),
         items: [
           {
             year: fallback.year,
@@ -367,18 +165,6 @@
       };
     }
 
-    function render() {
-      const today = getEventsForToday();
-      datePillEl.textContent = today.label;
-
-      eventsEl.innerHTML = today.items.map(item => `
-        <article class="event">
-          <p class="event-year">${item.year}</p>
-          <p class="event-text">${escapeHtml(item.text)}</p>
-        </article>
-      `).join("");
-    }
-
     function escapeHtml(str) {
       return String(str || "")
         .replace(/&/g, "&amp;")
@@ -386,6 +172,21 @@
         .replace(/>/g, "&gt;")
         .replace(/"/g, "&quot;")
         .replace(/'/g, "&#39;");
+    }
+
+    function render() {
+      const today = getEventsForToday();
+      document.getElementById("date").textContent = today.label;
+
+      const html = today.items.map(item => `
+        <div class="event">
+          <span class="year">${escapeHtml(item.year)}</span>
+          <div class="text">${escapeHtml(item.text)}</div>
+        </div>
+      `).join("");
+
+      document.getElementById("history-container").innerHTML =
+        html || '<div class="fallback">No history items available for today.</div>';
     }
 
     render();
